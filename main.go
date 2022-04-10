@@ -14,6 +14,17 @@ type User struct {
 	Name string
 	Deck []Card
 }
+type Game struct {
+	Player_1 *User	
+	Player_2 *User
+	Deck []Card
+	Turn_card Card
+	Turn_count int
+}
+
+
+
+
 func (user *User)Add_Card(data Card) {
 	user.Deck = append(user.Deck, data)
 }
@@ -28,13 +39,10 @@ func (user *User)Control(Turn_card Card) int {
 	}
 	return -1
 }
-type Game struct {
-	Player_1 *User	
-	Player_2 *User
-	Deck []Card
-	Turn_card Card
-	Turn_count int
-}
+
+
+
+
 func (game *Game)Card_get() Card{
 	card := game.Deck[0]
 	game.Deck = game.Deck[1:]
@@ -65,6 +73,10 @@ func (game *Game)Game_Control(Control int, Player *User){
 		Player.Remove_Card(Control)	
 	}
 }
+
+
+
+
 func main() {
 	game := Game{}
 	game.Player_1 = &User{Name: "user1"}
